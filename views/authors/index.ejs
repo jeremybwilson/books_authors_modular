@@ -1,0 +1,50 @@
+<% include ../partials/header %>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <% include ../partials/nav %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h3><%= title %></h3>
+                    <table class='results-table'>
+                        <thead>
+                            <tr>
+                            <th>Name</th>
+                            <th>Books</th>
+                            <th>Birthdate</th>
+                            <th>Country</th>
+                            <th>Actions:</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% for(const author of authors) { %>
+                            <tr>
+                                <td>
+                                    <a href='/authors/<%= author._id %>' title='View book'>
+                                    <%= author.first_name %> <%= author.last_name %>
+                                    </a>
+                                </td>
+                                <td>
+                                    <ul class='results'>
+                                    <% for(const book of author.books) { %>
+                                        <li><a href='/books/<%= book._id %>' title='View book'><%= book.title %></a></li>
+                                    <% } %>
+                                    </ul>
+                                </td>
+                                <td><%= author.birth_date %></td>
+                                <td><%= author.country %></td>
+                                <td><a href='/authors/<%= author._id %>/edit' class='btn btn-primary btn-sm' title='Edit'>Edit</a>
+                                <form action='/authors/<%= author._id %>/delete' method='POST'>
+                                    <button type='submit' class='btn btn-primary btn-sm'>Delete</button>
+                                </form>
+                            </td>
+                            </tr>
+                        <% } %>
+                        </tbody>
+                    </table> 
+                </div>
+            </div>
+        </div>
+<% include ../partials/footer %>

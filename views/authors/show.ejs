@@ -1,0 +1,33 @@
+<% include ../partials/header %>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <% include ../partials/nav %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                <% if(typeof author != 'undefined'){ %>
+                    <h1><%= title %></h1>
+                    <p><span class='strong'>Author</span>: <%= author.first_name %> <%= author.last_name %></p>
+                    <p><span class='strong'>Country</span>: <%= author.country %></p>
+                    <p><span class='strong'>Birthdate</span>: <%= author.birth_date %></p>
+                    <p>
+                        <a class="btn btn-primary btn-sm" href="/authors/<%= author._id%>/edit">Edit</a> 
+                        <form action='/authors/<%= author._id %>/delete' method='POST'>
+                            <button type='submit' class='btn btn-primary btn-sm'>Delete</button>
+                        </form>
+                    </p>
+                    <hr />
+                </div>
+            </div>
+                <%  } else { %>
+            <div class="row">
+                <div class="col"></div>
+                    <p class="error">There was an error.  No form data submitted.</p>
+                <% } %>
+                    <a href="/authors" class="btn btn-primary btn-sm" title="Go Back">Go Back</a>
+                </div>
+            </div>
+        </div>
+<% include ../partials/footer %>

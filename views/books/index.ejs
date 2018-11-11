@@ -1,0 +1,42 @@
+<% include ../partials/header %>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <% include ../partials/nav %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h3><%= title %></h3>
+                    <table class='results-table'>
+                        <thead>
+                            <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Year</th>
+                            <th>Pages</th>
+                            <th>Genre</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% for(const book of books) { %>
+                            <tr>
+                                <td><a href='/books/<%= book._id %>' title='View book'><%= book.title %></a></td>
+                                <td><%= book.author ? book.author.first_name : 'Unknown' %></td>
+                                <td><%= book.year %></td>
+                                <td><%= book.pages %></td>
+                                <td><%= book.genre %></td>
+                                <td><a href='/books/<%= book._id %>/edit' class='btn btn-primary btn-sm' title='Edit'>Edit</a>
+                                    <form action='/books/<%= book._id %>/delete' method='POST'>
+                                        <button type='submit' class='btn btn-primary btn-sm'>Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <% } %>
+                        </tbody>
+                    </table> 
+                </div>
+            </div>
+        </div>
+<% include ../partials/footer %>

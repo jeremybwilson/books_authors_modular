@@ -1,0 +1,25 @@
+ul.nav, ul.results {
+    list-style-type: none;
+    margin: 0;
+}
+
+ul.results {
+    margin-left: -2em;
+}
+
+ul.nav li {
+    display: inline-block;
+    margin-right: .5em;
+}
+
+.results-table {
+    width: 100%;
+}
+
+.results-table th, .results-table td {
+    width: auto;
+}
+
+.results-table .btn-sm {
+    margin-bottom: 2px;
+}

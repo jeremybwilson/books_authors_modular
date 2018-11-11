@@ -1,0 +1,68 @@
+<% include ../partials/header %>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <% include ../partials/nav %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h3><%= title %></h3>
+                </div>
+            </div>
+            <form action="/authors/<%= author._id %>/update" class='user-form' method="POST">
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for='first_name'>First name:</label>
+                        <input class='form-control' type='text' value='<%= author.first_name %>' name='first_name'>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for='last_name'>Last name:</label>
+                        <input class='form-control' type='text' value='<%= author.last_name %>' name='last_name'>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for='country'>Country:</label>
+                        <!-- <select class="custom-select" name="type" id="type">
+                            <option selected>Open this select menu</option>
+                            <# for(const book of books) { #>
+                            <option value="<#= book._id #>"><#= book.title #></option>
+                            <# } #>
+                        </select> -->
+                        <input class='form-control' type='text' value='<%= author.country %>' name='country'>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for='birth_date'>Birth date:</label>
+                        <input class='form-control' type='date' value='<%= author.birth_date %>' name='birth_date'>
+                    </div>
+                    <div class="form-group">
+                        <button class='btn btn-primary btn-sm' type='submit'>Submit</button>
+                    </div>
+                </div>
+            </div>
+            </form>
+            <div class="row">
+                <div class="col">
+                        <div class="errors">
+                        <% if(messages.author_update_error) { %>
+                            <% for (const key of messages.author_update_error) { %>
+                                <p><%= key %></p>
+                            <% } %>
+                        <% } %>
+                        </div>
+                </div>
+            </div>
+        </div>
+<% include ../partials/footer %>

@@ -1,0 +1,35 @@
+<% include ../partials/header %>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <% include ../partials/nav %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                <% if(typeof book != 'undefined'){ %>
+                    <h3><%= title %></h3>
+                    <p><span class='strong'>Title</span>: <%= book.title %></p>
+                    <p><span class='strong'>Author</span>: <a href='/authors/<#= author._id #>' title'View Author'><#= author.first_name #></a></p>
+                    <p><span class='strong'>Year</span>: <%= book.year %></p> 
+                    <p><span class='strong'>Pages</span>: <%= book.pages %></p>
+                    <p><span class='strong'>Genre</span>: <%= book.genre %> </p>
+                    <p>
+                        <a class="btn btn-primary btn-sm" href="/books/<%= book._id%>/edit">Edit</a> 
+                        <form action='/books/<%= book._id %>/delete' method='POST'>
+                            <button type='submit' class='btn btn-primary btn-sm'>Delete</button>
+                        </form>
+                    </p>
+                    <hr />
+                </div>
+            </div>
+                <%  } else { %>
+            <div class="row">
+                <div class="col"></div>
+                    <p class="error">There was an error.  No form data submitted.</p>
+                <% } %>
+                    <a href="/books" class="btn btn-primary btn-sm" title="Go Back">Go Back</a>
+                </div>
+            </div>
+        </div>
+<% include ../partials/footer %>
